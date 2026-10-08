@@ -1045,3 +1045,7 @@ body :not(svg):not(svg *)::placeholder{color:#ffffffa0!important}
 .hero-carousel{height:auto;min-height:410px}
 .hero-carousel .hero-content{height:auto;padding-bottom:72px}
 .hero-carousel .hero-synopsis{height:auto;max-height:none;overflow:visible;display:block;-webkit-line-clamp:none;-webkit-box-orient:initial}
+
+/* Linha de progresso das séries: azul = completa e finalizada; verde = temporada completa, com temporadas por vir; amarela = faltam episódios */
+.series-line{display:block;height:4px;margin:9px 2px 0;border-radius:3px}
+.series-blue{background:#2f80ed}.series-green{background:#3cc35a}.series-yellow{background:#f2c230}
