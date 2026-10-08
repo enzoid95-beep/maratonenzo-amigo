@@ -1242,3 +1242,15 @@ body :not(svg):not(svg *)::placeholder{color:#ffffffa0!important}
 .poster-art>img,.tp-poster img,.similar-poster img{animation:imgIn .45s ease both}
 .tp-hero-bg{animation:imgIn .6s ease both}
 @media(prefers-reduced-motion:reduce){#main.view-enter,#detailDialog[open] .tp,.poster-art>img,.tp-poster img,.similar-poster img,.tp-hero-bg{animation:none}.cw-card,.cw-art img{transition:none}}
+
+/* Saudação alinhada à logo (desktop com barra lateral) */
+@media(min-width:1340px){.greeting{margin-top:-66px;align-items:flex-end;position:relative;z-index:1;pointer-events:none}.greeting>*{pointer-events:auto}}
+/* Página do título: sem barra de rolagem visível e sem rolagem lateral */
+#detailDialog.detail-dialog[open]{overflow-x:clip;scrollbar-width:none}
+#detailDialog.detail-dialog[open]::-webkit-scrollbar{display:none}
+/* Semelhantes: 6 títulos, sem rolagem */
+.tp-wide .similar-track{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px;overflow:visible;padding:0;scroll-snap-type:none}
+.tp-wide .similar-card{flex:none;min-width:0}
+.tp-wide .similar-copy strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:1000px){.tp-wide .similar-track{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:520px){.tp-wide .similar-track{grid-template-columns:repeat(2,minmax(0,1fr))}}
