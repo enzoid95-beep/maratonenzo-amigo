@@ -1369,3 +1369,51 @@ body :not(svg):not(svg *)::placeholder{color:#ffffffa0!important}
 :is(#detailDialog,body) .choice-compact .choice-options{display:flex;flex-wrap:wrap;gap:8px;margin:0}
 :is(#detailDialog,body) .choice-compact .choice-go{min-height:40px;padding:9px 16px;font-size:12px;color:#fff!important}
 @media(max-width:640px){:is(#detailDialog,body) .choice-compact .choice-go{width:100%}}
+
+/* ===== Auditoria de UX/UI (08/10/2026) ===== */
+/* Contraste: texto escuro sobre o verde-limão dos chips selecionados e sobre o selo amarelo "Nos cinemas".
+   O !important é necessário porque a regra global de texto branco também usa !important. */
+:is(#detailDialog,body) :is(.rl-chip.is-on,.rl-chip.is-on span,.tp-tabs button.is-active){color:var(--chip-on-text)!important}
+:is(#detailDialog,body) .rl-kind-cinema{color:#17140c!important}
+
+/* Carrossel com altura fixa: trocar de título não desloca a página */
+.hero-carousel{height:460px;min-height:0}
+.hero-carousel .hero-content{height:100%;padding-bottom:72px}
+.hero-carousel .hero-synopsis{height:auto;max-height:4.8em;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;line-height:1.6;margin:12px 0 16px}
+.hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px}
+.hero-nav .hero-pause{font-size:11px;letter-spacing:-1px}
+@media(max-width:760px){
+ .hero-carousel{height:430px}
+ .hero-carousel .hero-content{padding:22px 20px 70px}
+ .hero-carousel h2{font-size:32px;max-height:2.2em}
+ .hero-carousel .hero-synopsis{-webkit-line-clamp:3;max-height:4.8em}
+}
+
+/* Datas que divergem entre fontes */
+.date-alert{display:inline-block;margin-top:6px;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:700;line-height:1.4;background:#e3b66024;border:1px solid #e3b66080}
+.rl-copy .date-alert{display:block;width:fit-content}
+.rl-when.rl-when-conflict{flex-direction:column;align-items:flex-start;gap:2px;background:linear-gradient(0deg,#3a2a0ef2,#3a2a0e00)}
+
+/* Calendário: títulos fora da biblioteca abrem detalhes e podem ir para a lista */
+.cal-item{display:flex;gap:8px;align-items:stretch}
+.cal-item .cal-row{flex:1;min-width:0}
+:is(#detailDialog,body) .cal-row-add{flex:0 0 auto;min-height:0;padding:8px 12px;font-size:12px}
+
+/* Busca sem resultado */
+.no-results .empty-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:14px}
+.no-results .choice-icon .icon{width:22px;height:22px}
+
+/* Indicador de títulos concluídos e metodologia do Top 10 */
+.kpi-sub{display:block;margin-top:4px;font-size:11px;opacity:.8}
+.top10-method{margin:-6px 0 16px;font-size:13px}
+.top10-method summary{cursor:pointer;font-weight:700;width:fit-content;text-decoration:underline;text-decoration-color:#e9e4d866;text-underline-offset:4px}
+.top10-method p{max-width:760px;margin:8px 0 0;line-height:1.6;opacity:.85}
+
+/* Início no celular: saudação compacta, acompanhamento primeiro */
+@media(max-width:760px){
+ body .greeting.greeting-compact{margin:0 0 16px;gap:10px}
+ body .greeting.greeting-compact h1{font-size:34px;line-height:1.08;margin:0 0 4px}
+ body .greeting.greeting-compact p{font-size:14px}
+ .greeting.greeting-compact .today{display:none}
+ .greeting.greeting-compact .greeting-side{margin-top:0}
+}
