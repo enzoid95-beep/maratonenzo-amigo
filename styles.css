@@ -1310,3 +1310,11 @@ body :not(svg):not(svg *)::placeholder{color:#ffffffa0!important}
 @keyframes rlShimmer{to{background-position:-150% 0}}
 @media(max-width:640px){.rl-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}.rl-toolbar{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.rl-skel{animation:none}}
+
+/* Remover vários + desfazer */
+.bulk-remove{min-height:40px;padding:0 16px;border-radius:10px;border:1px solid #ff8a8a66;background:#3a1d22;color:#ffc2c2;font-weight:700;font-size:13px}
+.bulk-remove:hover:not(:disabled){background:#4a2329;border-color:#ff9b9b}
+.bulk-remove:disabled{opacity:.45;cursor:not-allowed}
+#toast.has-action{display:flex;align-items:center;gap:14px;pointer-events:auto}
+.toast-undo{padding:6px 12px;border-radius:8px;background:#f7e1be;color:#2a2219;font-weight:700;font-size:12px}
+#toast .toast-undo{color:#2a2219;opacity:1;border:0}
