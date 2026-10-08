@@ -1358,3 +1358,14 @@ body :not(svg):not(svg *)::placeholder{color:#ffffffa0!important}
 :is(#detailDialog,body) .session-card .session-action{color:#fff}:is(#detailDialog,body) .session-card .session-action .icon{color:#fff}
 :is(#detailDialog,body) :is(.session-action,.choice-card .primary,.primary,.add-btn,.cw-mark){color:#fff!important}
 :is(#detailDialog,body) .trend-choice[aria-pressed="true"]{color:#d7f0c4!important}
+
+/* Sorteio da lista: versão compacta e discreta */
+:is(#detailDialog,body) .choice-card.choice-compact{display:flex;align-items:center;flex-wrap:wrap;gap:12px 18px;padding:14px 18px;margin-bottom:22px;border-radius:14px;background:#14171cb3;border:1px solid #ffffff17;box-shadow:none;min-height:0}
+:is(#detailDialog,body) .choice-compact:before,:is(#detailDialog,body) .choice-compact:after{display:none}
+.choice-compact .choice-text{display:flex;flex-direction:column;gap:3px;flex:1 1 260px;min-width:0}
+.choice-compact .choice-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:#f2efe8}
+.choice-compact .choice-kicker .icon{width:16px;height:16px;color:#e3b660}
+.choice-compact .choice-sub{font-size:12px;color:#9c988f;line-height:1.45}
+:is(#detailDialog,body) .choice-compact .choice-options{display:flex;flex-wrap:wrap;gap:8px;margin:0}
+:is(#detailDialog,body) .choice-compact .choice-go{min-height:40px;padding:9px 16px;font-size:12px;color:#fff!important}
+@media(max-width:640px){:is(#detailDialog,body) .choice-compact .choice-go{width:100%}}
