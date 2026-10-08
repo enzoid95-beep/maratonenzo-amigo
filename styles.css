@@ -1081,3 +1081,17 @@ body :not(svg):not(svg *)::placeholder{color:#ffffffa0!important}
 #detailDialog.is-fullscreen{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0;border-radius:0;overflow:auto}
 .detail-banner{cursor:zoom-in}
 #detailDialog.is-fullscreen .detail-banner{cursor:zoom-out}
+
+/* Ajustes do detalhe: tela cheia, botões de semelhantes e histórico de episódios */
+#detailDialog{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0;border:0;border-radius:0;padding:0;overflow:auto}
+#detailDialog .similar-add{background:#24272e;color:#f3efe6;border:1px solid #cfac6a80;opacity:1}
+#detailDialog .similar-add:disabled{background:#1f3a2a;color:#d7f0c4;border-color:#3cc35a80;opacity:1}
+#detailDialog .seasons-row{width:100%;margin-top:8px}
+#detailDialog .seasons-track{display:flex;flex-direction:column;gap:12px;overflow:visible;max-height:none;width:100%}
+#detailDialog .season-col{width:100%;flex:none;max-height:none;overflow:visible;min-width:0;padding:14px 16px;border:1px solid #ffffff1f;border-radius:14px;background:rgba(10,11,14,.6)}
+#detailDialog .season-heading{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 12px;margin:0 0 12px;font-size:13px;font-weight:700;letter-spacing:.6px;text-transform:uppercase}
+#detailDialog .season-heading span{font-size:12px;font-weight:500;text-transform:none;letter-spacing:0;color:#cfc8b8}
+#detailDialog .episodes{display:flex;flex-wrap:wrap;gap:8px;max-height:none;overflow:visible}
+#detailDialog .episode{width:auto;height:auto;min-height:0;padding:7px 12px;border-radius:999px;border:1px solid #ffffff3d;background:transparent;color:#d8d2c6;font-size:12px;font-weight:600;line-height:1.2}
+#detailDialog .episode:hover{border-color:#cfac6a}
+#detailDialog .episode.watched{background:#1f7a4d;border-color:#3cc35a;color:#eafff3}
