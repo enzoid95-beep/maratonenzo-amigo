@@ -1049,3 +1049,7 @@ body :not(svg):not(svg *)::placeholder{color:#ffffffa0!important}
 /* Linha de progresso das séries: azul = completa e finalizada; verde = temporada completa, com temporadas por vir; amarela = faltam episódios */
 .series-line{display:block;height:4px;margin:9px 2px 0;border-radius:3px}
 .series-blue{background:#2f80ed}.series-green{background:#3cc35a}.series-yellow{background:#f2c230}
+
+/* Séries: barra amarela proporcional ao progresso */
+.series-track{position:relative;overflow:hidden;background:#3a3a40}
+.series-track .series-fill{position:absolute;left:0;top:0;bottom:0;background:#f2c230;border-radius:3px}
