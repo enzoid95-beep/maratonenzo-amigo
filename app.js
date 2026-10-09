@@ -357,7 +357,7 @@ const similar=similarBlockHTML(r);
 $('#detailContent').innerHTML=`<article class="tp">
 <section class="tp-hero">
  <div class="tp-hero-bg"${bg?` style="background-image:url('${esc(bg)}')"`:''}></div>
- <div class="tp-topbar"><button type="button" class="tp-back" data-detail-back>${icon('arrow')}<span>Voltar</span></button></div>
+ <div class="tp-topbar"><button type="button" class="tp-back" data-detail-back>${icon('arrow')}<span>Voltar</span></button>${nextDetailButton()}</div>
  <div class="tp-hero-inner">
   <div class="tp-poster">${artwork(r,'tp-poster-img')}</div>
   <div class="tp-headline">
@@ -389,6 +389,10 @@ $('#detailContent').innerHTML=`<article class="tp">
 </article>`;
 const dlg=$('#detailDialog');dlg.style.setProperty('--detail-bg','none');dlg.scrollTop=0;fixImages(dlg);loadWindowTrailers();hydrateSimilar(dlg);wireDetailTabs()}
 function wireDetailTabs(){const dlg=$('#detailDialog');if(!dlg||!('IntersectionObserver' in window))return;if(dlg._tabObs)dlg._tabObs.disconnect();const btns=$$('.tp-tabs [data-anchor]',dlg);const obs=new IntersectionObserver(entries=>{entries.forEach(en=>{if(en.isIntersecting){btns.forEach(b=>b.classList.toggle('is-active',b.dataset.anchor===en.target.id))}})},{root:dlg,rootMargin:'-80px 0px -60% 0px'});btns.forEach(b=>{const el=document.getElementById(b.dataset.anchor);if(el)obs.observe(el)});dlg._tabObs=obs}
+// Próximo título da lista que está na tela (respeita busca e filtros)
+function nextDetailId(){if(!current)return "";const ids=getList().map(x=>x.id);const i=ids.indexOf(current.id);return i>=0&&i<ids.length-1?ids[i+1]:""}
+function nextDetailButton(){const id=nextDetailId();return id?`<button type="button" class="tp-back tp-next" data-detail-next aria-label="Próximo título"><span>Próximo</span>${icon("arrow")}</button>`:""}
+document.addEventListener("click",e=>{if(!e.target.closest("[data-detail-next]"))return;const id=nextDetailId();if(!id)return;current=items.find(x=>x.id===id);drawDetail();pushDetailState();$(".tp-next")?.focus()});
 function pushDetailState(){const h=current?`#/titulo/${encodeURIComponent(current.id)}`:location.hash;try{if(!history.state||!history.state.cineDetail)history.pushState({cineDetail:true},'',h);else if(location.hash!==h)history.replaceState({cineDetail:true},'',h)}catch{}}
 function importBackup(file){if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const payload=JSON.parse(String(reader.result||''));if(!payload||payload.format!=='cine360'||!Array.isArray(payload.items))throw new Error('formato');let total=0;for(const r of payload.items){if(!r||!r.id)continue;total++;if(originals.some(x=>x.id===r.id)){changes[r.id]={...(changes[r.id]||{}),...r}}else{const idx=added.findIndex(x=>x.id===r.id);if(idx>=0)added[idx]={...added[idx],...r};else added.push(r)}}items=originals.map(r=>enrichSaved({...r,...(changes[r.id]||{})})).concat(added.map(enrichSaved));persist();toast(`Backup importado: ${total} ${total===1?'título':'títulos'} mesclados à sua biblioteca.`);render()}catch{toast('Este arquivo não é um backup válido do Maratonenzo.')}finally{const input=$('#importFile');if(input)input.value=''}};reader.readAsText(file)}
 function backup(){try{localStorage.setItem('cine360-last-backup',new Date().toISOString())}catch{}const payload={format:'cine360',version:1,exportedAt:new Date().toISOString(),items,conflicts:window.CINE360_DATA.conflicts};const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='cine360-biblioteca.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('Biblioteca exportada com suas alterações.')}
