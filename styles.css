@@ -1417,3 +1417,6 @@ body :not(svg):not(svg *)::placeholder{color:#ffffffa0!important}
  .greeting.greeting-compact .today{display:none}
  .greeting.greeting-compact .greeting-side{margin-top:0}
 }
+
+/* Botão "Próximo": a seta aponta para a direita (o "Voltar" usa a seta girada) */
+.tp-back.tp-next .icon{transform:none}
